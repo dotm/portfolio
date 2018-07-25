@@ -64,7 +64,9 @@
         return (
           <div className="panel panel-default">
             <div className="panel-heading">
-              <h3 className="panel-title">{project.name}</h3>
+              <h2 className="panel-title pull-left">{project.name}</h2>
+              <h4 className="panel-title pull-right">{project.category}</h4>
+              <div className="clearfix"></div>
             </div>
             <div className="panel-body">
               <div className="row">
@@ -82,14 +84,20 @@
       class App extends React.Component{
         constructor(props) {
           super(props);
+
+          let category = {
+            IOS: "iOS Application",
+            FRONT_END: "Front-End Web Development",
+            CODE: "General Coding",
+          }
           let projects = [
             {
               name: "Project1",
-              category: "iOS App",
+              category: category.IOS,
               liveLink: "http://www.example.com/",
               sourceCodeLink: "https://github.com/dotm/codes",
               description: [
-                "This project is [insert short description of project]",
+                "This project is [insert short description of project including strength, uniqueness, etc.]",
                 "This project is built with [insert tech stack]",
                 "I made this project to [insert motivation]",
                 "In this team project, I contribute [insert contribution]",
@@ -97,7 +105,7 @@
             },
             {
               name: "Project2",
-              category: "iOS App",
+              category: category.FRONT_END,
               description: [
                 "This project is [insert short description of project]",
                 "This project is built with [insert tech stack]",
