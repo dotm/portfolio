@@ -150,5 +150,203 @@
       var mount = document.querySelector('#root');
       ReactDOM.render(<App />, mount);
     </script>
+    <script>
+      if(window.Babel) return
+
+      "use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function LiveLink(props) {
+  var link = props.link;
+
+  var liveLink = link ? React.createElement(
+    "a",
+    { href: link, target: "_blank", className: "btn btn-default" },
+    React.createElement("i", { className: "fa fa-eye", "aria-hidden": "true" }),
+    " Live Demo"
+  ) : null;
+
+  return liveLink;
+}
+function SourceCodeLink(props) {
+  var link = props.link;
+
+  var sourceCodeLink = link ? React.createElement(
+    "a",
+    { href: link, target: "_blank", className: "btn btn-default" },
+    React.createElement("i", { className: "fa fa-code", "aria-hidden": "true" }),
+    " Source Code"
+  ) : null;
+
+  return sourceCodeLink;
+}
+function Project(props) {
+  var project = props.project;
+
+
+  var description = project.description.map(function (paragraph) {
+    return React.createElement(
+      "p",
+      { key: paragraph },
+      paragraph
+    );
+  });
+  var toolbar = project.liveLink || project.sourceCodeLink ? React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      "div",
+      { className: "btn-group", role: "group", "aria-label": "links" },
+      React.createElement(
+        "button",
+        { type: "button", className: "btn btn-default", disabled: "disabled" },
+        "Check out: "
+      ),
+      React.createElement(LiveLink, { link: project.liveLink }),
+      React.createElement(SourceCodeLink, { link: project.sourceCodeLink })
+    ),
+    React.createElement("br", null),
+    React.createElement("br", null)
+  ) : null;
+
+  return React.createElement(
+    "div",
+    { className: "panel panel-default" },
+    React.createElement(
+      "div",
+      { className: "panel-heading" },
+      React.createElement(
+        "h2",
+        { className: "panel-title pull-left" },
+        project.name
+      ),
+      React.createElement(
+        "h4",
+        { className: "panel-title pull-right" },
+        project.category
+      ),
+      React.createElement("div", { className: "clearfix" })
+    ),
+    React.createElement(
+      "div",
+      { className: "panel-body" },
+      React.createElement(
+        "div",
+        { className: "row" },
+        React.createElement(
+          "div",
+          { className: "col-md-12" },
+          toolbar
+        ),
+        React.createElement(
+          "div",
+          { className: "col-md-12" },
+          description
+        )
+      )
+    )
+  );
+}
+
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    var category = {
+      IOS: "iOS Application",
+      FRONT_END: "Front-End Web Development",
+      CODE: "General Coding"
+    };
+    var projects = [{
+      name: "Project1",
+      category: category.IOS,
+      liveLink: "http://www.example.com/",
+      sourceCodeLink: "https://github.com/dotm/codes",
+      description: ["This project is [insert short description of project including strength, uniqueness, etc.]", "This project is built with [insert tech stack]", "I made this project to [insert motivation]", "In this team project, I contribute [insert contribution]"]
+    }, {
+      name: "Project2",
+      category: category.FRONT_END,
+      description: ["This project is [insert short description of project]", "This project is built with [insert tech stack]", "I made this project to [insert motivation]", "In this team project, I contribute [insert contribution]"]
+    }];
+
+    _this.listItems = projects.map(function (project) {
+      return React.createElement(Project, { project: project, key: project.name });
+    });
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        { className: "container-fluid" },
+        React.createElement(
+          "div",
+          { className: "row" },
+          React.createElement(
+            "div",
+            { className: "col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1" },
+            React.createElement(
+              "div",
+              { className: "panel panel-default", style: { marginTop: '5%' } },
+              React.createElement(
+                "div",
+                { className: "panel-body", style: { paddingTop: '0px' } },
+                React.createElement(
+                  "h1",
+                  { className: "text-center" },
+                  "Project Portfolio"
+                ),
+                React.createElement(
+                  "h4",
+                  { className: "text-center" },
+                  "Yoshua Elmaryono"
+                ),
+                React.createElement(
+                  "p",
+                  { className: "text-center" },
+                  "Projects I'm most proud of are on top."
+                ),
+                React.createElement(
+                  "div",
+                  { className: "text-center" },
+                  React.createElement(
+                    "div",
+                    { className: "btn-group", role: "group", "aria-label": "links" },
+                    React.createElement(
+                      "a",
+                      { className: "btn btn-default", href: "/" },
+                      React.createElement("i", { className: "fa fa-home", "aria-hidden": "true" }),
+                      " Go to Home Page"
+                    )
+                  )
+                )
+              )
+            ),
+            this.listItems
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(React.Component);
+
+var mount = document.querySelector('#root');
+ReactDOM.render(React.createElement(App, null), mount);
+    </script>
   </body>
 </html>
