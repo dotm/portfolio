@@ -52,7 +52,7 @@
           ? (
             <React.Fragment>
               <div className="btn-group" role="group" aria-label="links">
-                <button type="button" class="btn btn-default" disabled="disabled">Check out: </button>
+                <button type="button" className="btn btn-default" disabled="disabled">Check out: </button>
                 <LiveLink link={project.liveLink} />
                 <SourceCodeLink link={project.sourceCodeLink}/>
               </div>
@@ -115,10 +115,19 @@
             <div className="container-fluid">
               <div className="row">
                 <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                  <div class="panel panel-default" style={{marginTop: '5%'}}>
-                    <div class="panel-body" style={{paddingTop: '0px'}}>
+                  <div className="panel panel-default" style={{marginTop: '5%'}}>
+                    <div className="panel-body" style={{paddingTop: '0px'}}>
                       <h1 className="text-center">Project Portfolio</h1>
                       <h4 className="text-center">Yoshua Elmaryono</h4>
+                      <p className="text-center">Projects I'm most proud of are on top.</p>
+
+                      <div className="text-center">
+                        <div className="btn-group" role="group" aria-label="links">
+                          <a className="btn btn-default" href="/">
+                            <i className="fa fa-home" aria-hidden="true"></i> Go to Home Page
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
