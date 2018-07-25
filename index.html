@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+      body {
+        background-color: rgb(100, 100, 255);
+        background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+        repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+        repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function LiveLink(props){
+        let {link} = props
+        let liveLink = link ? (
+            <a href={link} target="_blank" className="btn btn-default">
+              <i className="fa fa-eye" aria-hidden="true"></i> Live Demo
+            </a>
+          ) : null
+
+        return liveLink
+      }
+      function SourceCodeLink(props){
+        let {link} = props
+        let sourceCodeLink = link ? (
+            <a href={link} target="_blank" className="btn btn-default">
+              <i className="fa fa-code" aria-hidden="true"></i> Source Code
+            </a>
+          ) : null
+
+        return sourceCodeLink
+      }
+      function Project(props){
+        let {project} = props
+        
+        let description = project.description.map(paragraph => (
+          <p key={paragraph}>{paragraph}</p>
+        ))
+        let toolbar = (project.liveLink || project.sourceCodeLink)
+          ? (
+            <React.Fragment>
+              <div className="btn-group" role="group" aria-label="links">
+                <button type="button" class="btn btn-default" disabled="disabled">Check out: </button>
+                <LiveLink link={project.liveLink} />
+                <SourceCodeLink link={project.sourceCodeLink}/>
+              </div>
+              <br/>
+              <br/>
+            </React.Fragment>
+          ) : null
+
+        return (
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">{project.name}</h3>
+            </div>
+            <div className="panel-body">
+              <div className="row">
+                <div className="col-md-12">
+                  {toolbar}
+                </div>
+                <div className="col-md-12">
+                  {description}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+      class App extends React.Component{
+        constructor(props) {
+          super(props);
+          let projects = [
+            {
+              name: "Project1",
+              category: "iOS App",
+              liveLink: "http://www.example.com/",
+              sourceCodeLink: "https://github.com/dotm/codes",
+              description: [
+                "This project is [insert short description of project]",
+                "This project is built with [insert tech stack]",
+                "I made this project to [insert motivation]",
+                "In this team project, I contribute [insert contribution]",
+              ],
+            },
+            {
+              name: "Project2",
+              category: "iOS App",
+              description: [
+                "This project is [insert short description of project]",
+                "This project is built with [insert tech stack]",
+                "I made this project to [insert motivation]",
+                "In this team project, I contribute [insert contribution]",
+              ],
+            },
+          ]
+
+          this.listItems = projects.map(project => <Project project={project} key={project.name}/>)
+        }
+        
+        render(){
+          return (
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                  <div class="panel panel-default" style={{marginTop: '5%'}}>
+                    <div class="panel-body" style={{paddingTop: '0px'}}>
+                      <h1 className="text-center">Project Portfolio</h1>
+                    </div>
+                  </div>
+                  
+                  {this.listItems}
+                </div>
+              </div>
+            </div>
+          )
+        }
+      }
+
+      var mount = document.querySelector('#root');
+      ReactDOM.render(<App />, mount);
+    </script>
+  </body>
+</html>
