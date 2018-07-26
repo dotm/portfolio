@@ -88,8 +88,10 @@
           let category = {
             IOS: "iOS Application",
             FRONT_END: "Front-End Web Development",
+            FULL_STACK: "Full-Stack Web Development",
             CODE: "General Coding",
           }
+
           let projects = [
             {
               name: "BST in Haskell",
@@ -101,7 +103,58 @@
               ],
             },
             {
-              name: "Project1",
+              name: "The Doors MiniGame",
+              category: category.IOS,
+              description: [
+                "This project is a mini-game I built with my teammates as our first challenge project.",
+                "This project is built with SpriteKit and AVFoundation framework.",
+                "In this team project, I code the whole app from scratch. Idea for this app is the result of brainstorming with my teammates. Texture and sound assets credits go to my teammates.",
+                "You can request TestFlight demo directly to me. Just contact me.",
+              ],
+            },
+            {
+              name: "React CRUD",
+              category: category.FRONT_END,
+              liveLink: "https://codepen.io/dotm/pen/vjZXrg",
+              sourceCodeLink: "https://codepen.io/dotm/pen/vjZXrg",
+              description: [
+                "This is a simple Create Read Update Delete using React.js.",
+                "I made this project to familiarize myself with React and its unidirectional data flow.",
+                "I've found that being disciplined about my app's data flow makes development cleaner, faster, and easier.",
+              ],
+            },
+            {
+              name: "BukuProfit.com (Accounting App)",
+              category: category.FRONT_END,
+              liveLink: "http://bukuprofit.com/",
+              description: [
+                "This project is the first project I completed at work as a professional programmer.",
+                "This project is built with Meteor.js at the front-end which communicates through API to Express.js + MySQL at the backend.",
+                "In this team project, I contribute [insert contribution]",
+              ],
+            },
+            {
+              name: "This Portfolio Page",
+              category: category.FRONT_END,
+              description: [
+                "This portfolio page is built using React, Bootstrap and CSS Pattern.",
+                "This page is powered by GitHub Pages.",
+              ],
+            },
+            {
+              name: "Employee List CRUD App",
+              category: category.FULL_STACK,
+              sourceCodeLink: "https://github.com/dotm/employee_list",
+              description: [
+                "This project is my first full-stack CRUD app built from scratch.",
+                "This project is built with Meteor.js full-stack framework.",
+                "I made this project for my probation period at my first job.",
+                "This is the project that made me stop fearing the back-end. It also made me stop feeling I'm some kind of impostor programmer.",
+              ],
+            },
+            /*
+            {
+              name: "Example Project",
               category: category.IOS,
               liveLink: "http://www.example.com/",
               sourceCodeLink: "https://github.com/dotm/codes",
@@ -110,18 +163,10 @@
                 "This project is built with [insert tech stack]",
                 "I made this project to [insert motivation]",
                 "In this team project, I contribute [insert contribution]",
+                "You can request [demo, source code] directly to me. Just contact me.",
               ],
             },
-            {
-              name: "Project2",
-              category: category.FRONT_END,
-              description: [
-                "This project is [insert short description of project]",
-                "This project is built with [insert tech stack]",
-                "I made this project to [insert motivation]",
-                "In this team project, I contribute [insert contribution]",
-              ],
-            },
+            */
           ]
 
           this.listItems = projects.map(project => <Project project={project} key={project.name}/>)
