@@ -27,7 +27,7 @@
         let {link} = props
         let liveLink = link ? (
             <a href={link} target="_blank" className="btn btn-default">
-              <i className="fa fa-eye" aria-hidden="true"></i> Live Demo
+              <i className="fa fa-eye" aria-hidden="true"></i> Demo
             </a>
           ) : null
 
@@ -37,7 +37,7 @@
         let {link} = props
         let sourceCodeLink = link ? (
             <a href={link} target="_blank" className="btn btn-default">
-              <i className="fa fa-code" aria-hidden="true"></i> Source Code
+              <i className="fa fa-code" aria-hidden="true"></i> Code
             </a>
           ) : null
 
@@ -53,7 +53,7 @@
           ? (
             <React.Fragment>
               <div className="btn-group" role="group" aria-label="links">
-                <button type="button" className="btn btn-default" disabled="disabled">Check:</button>
+                <button type="button" className="btn btn-default" disabled="disabled">Check out:</button>
                 <LiveLink link={project.liveLink} />
                 <SourceCodeLink link={project.sourceCodeLink}/>
               </div>
